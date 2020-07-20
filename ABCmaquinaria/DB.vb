@@ -114,6 +114,7 @@ Public Class DB
             If Not getUbicacion(idEconomico, idOperador, idObra, fecha_alta) Then
                 'asError = "La ubicación ya existe."
                 'Return False
+                ' MODIFICACION ESPECIAL. 20/07/2020
                 DBcomando = New SqlCommand("insert into ubicacion(idEconomico, idOperador, idObra, fecha_alta, comentarios, idUsuario, fecha_ingreso, odometro, 
                                                                 sello, litros, horometro, ventana)
                                         values(@idEconomico, @idOperador, @idObra, @fecha_alta, @comentarios, @idUsuario, @fecha_ingreso, @odometro,
