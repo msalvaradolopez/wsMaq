@@ -1,0 +1,14 @@
+C:\inetpub\wwwroot\WSmaq\bin\WSmaq.dll
+C:\inetpub\wwwroot\WSmaq\bin\WSmaq.pdb
+C:\inetpub\wwwroot\WSmaq\bin\WSmaq.xml
+C:\inetpub\wwwroot\WSmaq\bin\ABCmaquinaria.dll
+C:\inetpub\wwwroot\WSmaq\bin\ABCmaquinaria.pdb
+C:\inetpub\wwwroot\WSmaq\bin\ABCmaquinaria.xml
+C:\inetpub\wwwroot\WSmaq\obj\Debug\WSmaq.Resources.resources
+C:\inetpub\wwwroot\WSmaq\obj\Debug\WSmaq.vbproj.GenerateResource.Cache
+C:\inetpub\wwwroot\WSmaq\obj\Debug\WSmaq.dll
+C:\inetpub\wwwroot\WSmaq\obj\Debug\WSmaq.xml
+C:\inetpub\wwwroot\WSmaq\obj\Debug\WSmaq.pdb
+C:\inetpub\wwwroot\WSmaq\bin\WSmaq.dll.config
+C:\inetpub\wwwroot\WSmaq\obj\Debug\WSmaq.vbprojAssemblyReference.cache
+C:\inetpub\wwwroot\WSmaq\obj\Debug\WSmaq.vbproj.CopyComplete

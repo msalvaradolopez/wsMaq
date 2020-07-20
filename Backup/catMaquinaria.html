@@ -1,0 +1,439 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Global Sys</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <title>Registro de Maquinaria</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+     <script src="https://cdn.datatables.net/buttons/1.5.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.32/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.1/js/buttons.print.min.js"></script>
+
+    <script src="js/alertify.min.js" type="text/javascript"></script>
+    <link href="css/alertify.core.css" rel="stylesheet" type="text/css" />
+    <link href="css/alertify.default.css" rel="stylesheet" type="text/css" />
+
+    <!-- jQuery 3 -->
+    <!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
+    <!-- Bootstrap 3.3.7 -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+	<div class="container">
+		<br />
+        <header>
+        	<nav class="navbar <navbar-default navbar-fixed-top navbar-inverse">
+                <div class="container-fluid"> 
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
+                            <span class="sr-only">Menu</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="#" class="navbar-brand">QUANTUS</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="index.html">Inicio</a></li>
+                            <li><a href="Ubicaciones.html">Ubicaciones</a></li>
+                            <li><a href="ConsultaMaquinaria.html">Consulta ubicación</a></li>
+                            <li><a href="Diesel.html">Diesel</a></li>
+                            <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Catálogos <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">Maquinaria</a></li>
+                                        <li><a href="catObras.html">Obra</a></li>
+                                        <li><a href="catOperadores.html">Operador</a></li>
+                                    </ul>
+                            </li>
+                            <li><a>Acerca de</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <br />
+        <br />
+        <div class="container table-responsive">
+        	<form class="form-horizontal">
+        		<div class="page-header">
+                <h4 align="center">
+                    Catálogo Maquinaria <small>Agregando...</small>
+                </h4>
+            </div>
+
+             <!-- Button trigger modal -->
+			<button type="button" id="btnAgregar" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+			  Agregar nueva maquina...
+			</button>
+			 <br />
+        	<br />
+
+             <div class="row">
+                <div class="form-group col-lg-12 ">
+                    <table id="maquinaria" class="table table-hover table-condensed tabe-bordered row-border display compact">
+                        <thead>
+                            <tr>
+                                <th>
+                                    No. Equipo
+                                </th>
+                                <th>
+                                    Tipo
+                                </th>
+                                <th>
+                                    Estatus
+                                </th>
+                                 <th>
+                                    Fecha ingreso
+                                </th>
+                                <th>
+                                    Acción
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th>
+                                    No. Equipo
+                                </th>
+                                <th>
+                                    Tipo
+                                </th>
+                                <th>
+                                    Estatus
+                                </th>
+                                <th>
+                                    Fecha ingreso
+                                </th>
+                                <th>
+                                    Acción
+                                </th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+
+
+        	</form>
+        </div>
+	</div>
+
+	<!-- Modal -->
+			<div class="modal fade bd-example-modal-lg" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			  <div class="modal-dialog modal-lg" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h3 class="modal-title" id="exampleModalLongTitle">Agregando una nueva maquina</h3>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+
+			      <div class="modal-body">
+			          <div class="form-group">
+			          		<label id="lbError"></label>
+			          		<div class="row">
+					            <div class="form-group col-lg-4 ">
+		                            <label for="txtEquipo">
+		                                Equipo</label>
+		                            <input type="text" id="txtEquipo" style='text-transform:uppercase' maxlength = "10" class="form-control input-lg" placeholder="No Económico" />
+		                        </div>
+	                        </div>
+	                        <div class="row">
+					            <div class="form-group col-lg-6 ">
+		                            <label for="txtTipo">
+		                                Tipo</label>
+		                            <input type="text" id="txtTipo" style='text-transform:uppercase' maxlength = "100" class="form-control input-lg" placeholder="Tipo Maquinaria" />
+		                        </div>
+	                        </div>
+
+                            <!--Radio group-->
+                                <div>Estatus:</div>
+                                <input type="radio" name="estatus" value="A" checked/> ACTIVO 
+                                <input type="radio" name="estatus" value="B" /> BAJA 
+                            <!--Radio group-->
+
+                    	</div>
+			      </div>
+
+			      <div class="modal-footer">
+			        <input type="button" name=""  onclick="resetValores()" class="btn btn-secondary" data-dismiss="modal" value="Salir">
+			        <input type="button" name="" onclick="agregarMaquina()" class="btn btn-primary"  value="Guardar">
+			      </div>
+			    </div>
+			  </div>
+			</div>
+
+			<!-- Modal Alert-->
+			<div id="modal-alert2" tabindex="-1" role="dialog" aria-hidden="true" class="modal fade">
+			      <div class="modal-dialog" style="width:700px; important">
+			        <div class="modal-content">
+			          <div class="modal-body"></div>
+			          <div class="modal-footer">
+			            <button type="button" data-dismiss="modal" class="btn btn-primary">Aceptar</button>
+			          </div>
+			        </div>
+			      </div>
+			</div>
+
+    <input type="hidden" id="hdnCategoriaUsuario">
+    <input type="hidden" id="hdnNuevoRegistro">
+</body>
+</html>
+ 
+ <script type="text/javascript">
+        $(document).ready(function () {
+            getSession();
+        });
+
+        function getMaquinaria(){
+            var objParam = {};
+            var botonesGrid = "";
+
+            if ($("#hdnCategoriaUsuario").val() == "A"){
+                botonesGrid = "<button type='button' class='edit_btn btn btn-primary' ><span class='glyphicon glyphicon-pencil'></span></button><button type='button' class='borrar_btn btn btn-danger' onclick= 'eliminarRegistro();'><span class='glyphicon glyphicon-trash'></span></button>";    
+            } else {
+                $("#btnAgregar").attr('disabled','disabled');
+                botonesGrid = "<button type='button' class='edit_btn btn btn-primary' onclick= 'eliminarRegistro();' disabled><span class='glyphicon glyphicon-pencil'><button type='button' class='borrar_btn btn btn-danger' onclick= 'eliminarRegistro();' disabled><span class='glyphicon glyphicon-trash'></span></button>";
+            }
+            
+            $("#hdnNuevoRegistro").val("S");
+
+            $('#maquinaria').dataTable().fnDestroy();
+
+            $.ajax({
+                type: "POST",
+                url: "WScatalogos.asmx/getMaquinaria",
+                data: JSON.stringify(objParam),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    var obj = jQuery.parseJSON(data.d);
+                    $('#maquinaria').dataTable({
+                        data: obj,
+                        columns: [
+                                { "data": "idEconomico" },
+                                { "data": "Tipo" },
+                                { "data": "Estatus" },
+                                { "data": "fecha_alta" },
+                                { "defaultContent": botonesGrid}
+                            ],
+                        dom: "Bfrtip",
+                        buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+                        retrieve: true,
+                        paging: false,
+                        responsive: true,
+                        select: true,
+                        deferRender: true
+                    });
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alertify.error("error framework");
+                }
+            });
+            resetValores();
+        }
+
+        function agregarMaquina(){
+
+            if ($("#txtEquipo").val() == "") {
+                alertify.error("Falta : No Equipo");               
+               return;
+            }
+
+            if ($("#txtTipo").val() == "") {
+                alertify.alert("Falta : Tipo de Maquina");
+                return;
+            }
+
+
+            var objParam = {};
+            objParam.Nuevo = $("#hdnNuevoRegistro").val();
+            objParam.idEconomico = $("#txtEquipo").val();
+            objParam.Tipo = $("#txtTipo").val();
+            objParam.Estatus = $('input:radio[name=estatus]:checked').val();
+
+            $.ajax({
+                type: "POST",
+                url: "WScatalogos.asmx/setMaquinaria",
+                data: JSON.stringify(objParam),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    var obj = jQuery.parseJSON(data.d);
+                    if (obj.dato == "N") {
+                        alertify.error("Error :" + obj.mensaje);
+                    }
+                    else{
+                        if ($("#hdnNuevoRegistro").val() == "S"){
+                            alertify.success("Registro insertado.");    
+                        }else {
+                            alertify.success("Registro actualizado.");    
+                        }
+                        
+                        $('#exampleModalCenter').modal('toggle');
+                        $("#txtEquipo").val("");
+                        $("#txtTipo").val("");
+                        getMaquinaria();
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alertify.error("error framework");
+                }
+            });
+
+        }
+
+        
+        function getSession() {
+
+            var objParam = {};
+            objParam.categoriaAcceso = "A"
+
+            $.ajax({
+                type: "POST",
+                url: "WSmaquinaria.asmx/getSession",
+                data: JSON.stringify(objParam),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    var obj = jQuery.parseJSON(data.d);
+                    if (obj.dato == "N") {
+                        parent.location = "Index.html";
+                    }
+                    $("#hdnCategoriaUsuario").val(obj.dato);
+                    getMaquinaria();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alertify.error("error framework");
+                }
+            });
+        }
+
+        $('#maquinaria tbody').on('click',  '.edit_btn', function () { // works only 
+            var data_row = $(this).closest("tr");
+            var col01 = data_row.find("td:eq(0)").text();
+
+
+            var objParam = {};
+            objParam.NoEquipo = col01;
+            
+            $.ajax({
+                type: "POST",
+                url: "WScatalogos.asmx/getMaquinariaDato",
+                data: JSON.stringify(objParam),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    var obj = jQuery.parseJSON(data.d);
+                    $.map(obj, function(x){
+                        $("#txtEquipo").val(x.idEconomico);
+                        $("#txtTipo").val(x.Tipo);
+                        if (x.estatus == "A"){
+                            $('input:radio[name=estatus]')[0].checked = true;
+                        }else {
+                            $('input:radio[name=estatus]')[1].checked = true;
+                        }    
+                    });
+                    
+                    $("#exampleModalLongTitle").html('Modificando maquinaria...');
+                    $("#txtEquipo").attr("disabled", "disabled");
+                    $("#exampleModalCenter").modal('show');
+
+
+                    $("#hdnNuevoRegistro").val("N"); // INDICA QUE ESTÁ EN EDICIÓN.
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alertify.error("error framework");
+                }
+            });
+        });  
+
+        $('#maquinaria tbody').on('click',  '.borrar_btn', function () { // works only 
+            var data_row = $(this).closest("tr");
+            var col01 = data_row.find("td:eq(0)").text();
+
+
+            var objParam = {};
+            objParam.NoEquipo = col01;
+            
+            $.ajax({
+                type: "POST",
+                url: "WScatalogos.asmx/getMaquinariaDato",
+                data: JSON.stringify(objParam),
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    var obj = jQuery.parseJSON(data.d);
+                    $.map(obj, function(x){
+                        $("#txtEquipo").val(x.idEconomico);
+                        $("#txtTipo").val(x.Tipo);
+                        $('input:radio[name=estatus]')[1].checked = true;
+                    });
+                    
+                    $("#exampleModalLongTitle").html('Baja de maquinaria...');
+                    $("#txtEquipo").attr("disabled", "disabled");
+                    $("#txtTipo").attr("disabled", "disabled");
+                    $('input:radio[name=estatus]')[0].disabled = true;
+                    $('input:radio[name=estatus]')[1].disabled = true;
+                    $("#exampleModalCenter").modal('show');
+
+
+                    $("#hdnNuevoRegistro").val("N"); // INDICA QUE ESTÁ EN EDICIÓN.
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alertify.error("error framework");
+                }
+            });
+        }); 
+
+        function resetValores(){
+                $("#exampleModalLongTitle").html('Agregando maquinaria...');
+                $("#txtEquipo").removeAttr('disabled');
+                $("#txtTipo").removeAttr('disabled');
+                $("#txtEquipo").val("");
+                $("#txtTipo").val("");
+                $('input:radio[name=estatus]')[0].disabled = false;
+                $('input:radio[name=estatus]')[1].disabled = false;
+                $('input:radio[name=estatus]')[0].checked = true;
+                $("#hdnNuevoRegistro").val("S")
+        }  
+
+    </script>

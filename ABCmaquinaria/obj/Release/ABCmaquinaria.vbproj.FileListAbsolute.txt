@@ -1,0 +1,9 @@
+C:\inetpub\wwwroot\WSmaq\ABCmaquinaria\bin\Release\ABCmaquinaria.dll
+C:\inetpub\wwwroot\WSmaq\ABCmaquinaria\bin\Release\ABCmaquinaria.pdb
+C:\inetpub\wwwroot\WSmaq\ABCmaquinaria\bin\Release\ABCmaquinaria.xml
+C:\inetpub\wwwroot\WSmaq\ABCmaquinaria\obj\Release\ABCmaquinaria.Resources.resources
+C:\inetpub\wwwroot\WSmaq\ABCmaquinaria\obj\Release\ABCmaquinaria.vbproj.GenerateResource.Cache
+C:\inetpub\wwwroot\WSmaq\ABCmaquinaria\obj\Release\ABCmaquinaria.dll
+C:\inetpub\wwwroot\WSmaq\ABCmaquinaria\obj\Release\ABCmaquinaria.xml
+C:\inetpub\wwwroot\WSmaq\ABCmaquinaria\obj\Release\ABCmaquinaria.pdb
+C:\inetpub\wwwroot\WSmaq\ABCmaquinaria\obj\Release\ABCmaquinaria.vbprojAssemblyReference.cache

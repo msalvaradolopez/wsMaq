@@ -1,0 +1,163 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Global Sys</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+        name="viewport">
+    <!-- Bootstrap 3.3.7 -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="bower_components/Ionicons/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <title>Registro de ubicaciones</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="jquery-ui-1.12.1/jquery-ui.css">
+
+    <script src="js/alertify.min.js" type="text/javascript"></script>
+    <link href="css/alertify.core.css" rel="stylesheet" type="text/css" />
+    <link href="css/alertify.default.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+    <!-- jQuery 3 -->
+    <!--<script src="bower_components/jquery/dist/jquery.min.js"></script>-->
+    <!-- Bootstrap 3.3.7 -->
+    <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/adminlte.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $.cookie("acceso", "N");
+            $("#txtUsuario").val("")
+            $("#txtPassw").val("")
+        });
+
+        function accesoUsuario() {
+            if ($("#txtUsuario").val() == "") {
+                alertify.error("Falta : Usuario");
+                return;
+            }
+
+            if ($("#txtPassw").val() == "") {
+                alertify.error("Falta : Contraseña");
+                return;
+            }
+
+            var objParam = {}
+            objParam.usuario = $("#txtUsuario").val();
+            objParam.passw = $("#txtPassw").val();
+
+            $.ajax({
+                type: "POST",
+                url: "WSmaquinaria.asmx/getAcceso",
+                data: JSON.stringify(objParam),
+                contentType: "application/json",
+                dataType: "json",
+                async: false,
+                success: function (data) {
+                    var obj = jQuery.parseJSON(data.d);
+                    if (obj.dato == "S") {
+                        $.cookie("acceso", "S");
+                        $.cookie("usuario", $("#txtUsuario").val());
+                        parent.location = "Ubicaciones.html";
+                    } else {
+                        $.cookie("acceso", "N");
+                        alertify.error(obj.mensaje);
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $.cookie("acceso", "N");
+                    alertify.error("error framework");
+                }
+
+            });
+
+           
+        }
+
+    </script>
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="container">
+        <br />
+        <header>
+            <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+                <div class="container-fluid"> 
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
+                            <span class="sr-only">Menu</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="#" class="navbar-brand">QUANTUS</a>
+                    </div>
+                    <div class="collapse navbar-collapse" id="navbar-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#">Inicio</a></li>
+                            <li><a href="Ubicaciones.html">Ubicaciones</a></li>
+                            <li><a href="ConsultaMaquinaria.html">Consulta ubicación</a></li>
+                            <li><a href="Diesel.html">Diesel</a></li>
+                            <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button">Catálogos <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="catMaquinaria.html">Maquinaria</a></li>
+                                        <li><a href="catObras.html">Obra</a></li>
+                                        <li><a href="catOperadores.html">Operador</a></li>
+                                    </ul>
+                            </li>
+                            <li><a>Acerca de</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <br />
+        <br />
+        <div class="container">
+            <form class="form-horizontal">
+            <div class="page-header">
+                <h4 align="center">
+                    Acceso a la aplicación <small>login...</small>
+                </h4>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6 ">
+                    <label for="txtUsuario">
+                        Usuario </label>
+                    <input type="text" id="txtUsuario" style='text-transform:uppercase' class="form-control input-lg" placeholder="No. nómina" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6 ">
+                    <label for="txtPassw">
+                        Contraseña</label>
+                    <input type="password" id="txtPassw" class="form-control input-lg" placeholder="Contraseña" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6 ">
+                    <input type="button" class="btn btn-primary btn-lg btn-block" onclick="accesoUsuario()" value="Acceder"/>
+                </div>
+            </div>
+            
+            </form>
+        </div>
+    </div>
+    <input type="hidden" id="hdnIdEquipo">
+</body>
+</html>
